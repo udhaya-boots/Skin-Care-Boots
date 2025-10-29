@@ -72,15 +72,15 @@ def init_database():
     
     # Insert sample products
     sample_products = [
-        ('Serum by scarlet', 'Scarlet', 'Mengandung bahan alami baik digunakan untuk kulit berminyak', 
+        ('Serum by scarlet', 'Scarlet', 'Contains natural ingredients good for oily skin', 
          '/images/serum1.png', 'serum', 'pore,acne', 299000, 4.5, 1),
-        ('Hydrating Facial Toner', 'SkinLab', 'Mengandung bahan alami baik untuk kulit kering',
+        ('Hydrating Facial Toner', 'SkinLab', 'Contains natural ingredients good for dry skin',
          '/images/toner1.png', 'toner', 'dry,texture', 199000, 4.3, 1),
-        ('Acne Clear Solution', 'DermaCare', 'Formula khusus untuk mengatasi jerawat dan bekas jerawat',
+        ('Acne Clear Solution', 'DermaCare', 'Special formula to treat acne and acne scars',
          '/images/acne1.png', 'treatment', 'acne,inflammation', 349000, 4.7, 1),
-        ('Pore Minimizer Essence', 'PureGlow', 'Mengurangi tampilan pori-pori dan mengontrol minyak',
+        ('Pore Minimizer Essence', 'PureGlow', 'Reduces the appearance of pores and controls oil',
          '/images/essence1.png', 'essence', 'pore,oily', 279000, 4.4, 0),
-        ('Gentle Face Cleanser', 'SkinLab', 'Pembersih wajah lembut untuk semua jenis kulit',
+        ('Gentle Face Cleanser', 'SkinLab', 'Gentle facial cleanser for all skin types',
          '/images/cleanser1.png', 'cleanser', 'normal,dry', 159000, 4.6, 1),
     ]
     
@@ -91,10 +91,10 @@ def init_database():
     
     # Insert sample tips
     sample_tips = [
-        ('Cara memilih toner yang baik', 'Mencandung bahan alami baik digunakan untuk kulit berminyak', 'good'),
-        ('Cara memilih serum yang baik', 'Mengandung bahan alami baik digunakan untuk kulit berminyak', 'good'),
-        ('Pentingnya sunscreen', 'Gunakan sunscreen setiap hari untuk melindungi kulit dari sinar UV', 'good'),
-        ('Urutan skincare yang benar', 'Cleansing, toner, serum, moisturizer, sunscreen', 'good'),
+        ('How to choose a good toner', 'Contains natural ingredients good for oily skin', 'good'),
+        ('How to choose a good serum', 'Contains natural ingredients good for oily skin', 'good'),
+        ('Importance of sunscreen', 'Use sunscreen daily to protect skin from UV rays', 'good'),
+        ('Correct skincare routine', 'Cleansing, toner, serum, moisturizer, sunscreen', 'good'),
     ]
     
     cursor.executemany('''

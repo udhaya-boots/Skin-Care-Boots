@@ -39,7 +39,7 @@ function Home() {
       {/* Header */}
       <div className="bg-white p-6">
         <h2 className="text-2xl font-bold text-gray-800">
-          Selamat siang,<br />{user?.name || 'User'}
+          Good afternoon,<br />{user?.name || 'User'}
         </h2>
       </div>
 

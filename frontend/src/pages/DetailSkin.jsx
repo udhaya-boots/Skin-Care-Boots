@@ -116,7 +116,7 @@ function DetailSkin() {
             <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-gray-800">
-                  {analysis.pore_analysis.severity === 'minimal' ? 'Luar biasa' : 'Perlu Perawatan'}
+                  {analysis.pore_analysis.severity === 'minimal' ? 'Excellent' : 'Needs Care'}
                 </h3>
                 <span className="text-4xl font-bold text-orange-400">
                   {Math.round(analysis.overall_score)}

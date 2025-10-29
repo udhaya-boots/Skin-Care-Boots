@@ -159,10 +159,10 @@ class SkinAnalyzerService:
     def _generate_recommendation(self, score, concerns):
         """Generate personalized recommendation"""
         if score > 80:
-            return "Luar biasa! Kulit Anda dalam kondisi sangat baik."
+            return "Excellent! Your skin is in very good condition."
         elif score > 60:
-            return "Kulit Anda cukup baik, pertahankan dengan perawatan rutin."
+            return "Your skin is quite good, maintain it with regular care routine."
         elif score > 40:
-            return "Hasil menunjukkan kulit anda membutuhkan perawatan perbaikan kulit"
+            return "Results show your skin needs improvement care treatment."
         else:
-            return "Kulit memerlukan perhatian khusus. Konsultasi dengan ahli kulit disarankan."
+            return "Skin requires special attention. Consultation with dermatologist is recommended."
