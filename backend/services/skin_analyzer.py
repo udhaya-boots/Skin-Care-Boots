@@ -1,10 +1,18 @@
 import cv2
 import numpy as np
+from typing import Dict, Any
+import base64
 from services.image_processor import ImageProcessorService
+from .product_service import ProductService
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 class SkinAnalyzerService:
     def __init__(self):
         self.image_processor = ImageProcessorService()
+        self.product_service = ProductService()
     
     def analyze(self, image_data):
         """Perform comprehensive skin analysis"""
@@ -41,6 +49,17 @@ class SkinAnalyzerService:
             if texture_analysis['score'] > 35:
                 concerns.append('texture')
             
+            # Get product recommendations
+            product_recommendations = self.get_product_recommendations({
+                'scores': {
+                    'acne_score': acne_analysis['score'],
+                    'pore_score': pore_analysis['score'],
+                    'texture_score': texture_analysis['score'],
+                    'overall_score': overall_score
+                },
+                'concerns': concerns
+            })
+            
             return {
                 'success': True,
                 'data': {
@@ -50,7 +69,8 @@ class SkinAnalyzerService:
                     'texture_analysis': texture_analysis,
                     'skin_type': skin_type,
                     'concerns': concerns,
-                    'recommendation': self._generate_recommendation(overall_score, concerns)
+                    'recommendation': self._generate_recommendation(overall_score, concerns),
+                    'product_recommendations': product_recommendations
                 }
             }
         except Exception as e:
@@ -89,27 +109,7 @@ class SkinAnalyzerService:
         lower_red2 = np.array([170, 50, 50])
         upper_red2 = np.array([180, 255, 255])
         
-        mask1 = cv2.inRange(hsv, lower_red1, upper_red1)
-        mask2 = cv2.inRange(hsv, lower_red2, upper_red2)
-        red_mask = mask1 + mask2
-        
-        # Find contours (potential acne spots)
-        contours, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        
-        # Filter contours by size
-        acne_spots = [c for c in contours if 10 < cv2.contourArea(c) < 500]
-        
-        acne_count = len(acne_spots)
-        acne_score = min(100, acne_count * 3)
-        
-        return {
-            'score': round(acne_score, 2),
-            'count': acne_count,
-            'severity': self._get_severity(acne_score),
-            'description': f'{acne_count} potential acne spots detected'
-        }
-    
-    def _analyze_texture(self, image):
+        # Create masks for red regions
         """Analyze skin texture smoothness"""
         gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
         
