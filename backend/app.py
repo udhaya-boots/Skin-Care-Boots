@@ -36,6 +36,58 @@ def create_app():
     def bad_request(error):
         return jsonify({'error': 'Bad request'}), 400
     
+    # Authentication endpoints
+    @app.route('/api/auth/signup', methods=['POST'])
+    def signup():
+        try:
+            data = request.json
+            email = data.get('email')
+            password = data.get('password')
+            name = data.get('name', '')
+            
+            if not email or not password:
+                return jsonify({'error': 'Email and password are required'}), 400
+            
+            # Simple user storage (in production, use a proper database)
+            # For now, we'll just return success
+            return jsonify({
+                'success': True,
+                'message': 'User registered successfully',
+                'user': {
+                    'email': email,
+                    'name': name
+                }
+            })
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    
+    @app.route('/api/auth/signin', methods=['POST'])
+    def signin():
+        try:
+            data = request.json
+            email = data.get('email')
+            password = data.get('password')
+            
+            if not email or not password:
+                return jsonify({'error': 'Email and password are required'}), 400
+            
+            # Simple authentication (in production, verify against database)
+            # For now, we'll accept any non-empty credentials
+            if email and password:
+                return jsonify({
+                    'success': True,
+                    'message': 'Login successful',
+                    'user': {
+                        'email': email,
+                        'name': email.split('@')[0]  # Use email prefix as name
+                    },
+                    'token': 'mock_jwt_token_' + email  # Mock JWT token
+                })
+            else:
+                return jsonify({'error': 'Invalid credentials'}), 401
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    
     # Add product recommendations endpoint
     @app.route('/api/product-recommendations', methods=['POST'])
     def get_product_recommendations():
