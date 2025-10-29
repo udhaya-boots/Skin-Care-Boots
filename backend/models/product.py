@@ -1,0 +1,3 @@
+class Product(Base):
+    # ...existing fields...
+    url = Column(String, nullable=True)  # Add URL field for Boots products

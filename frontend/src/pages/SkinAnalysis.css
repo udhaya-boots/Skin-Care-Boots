@@ -1,0 +1,123 @@
+/* Product Recommendations in Analysis Results */
+.product-recommendations-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  border-radius: 12px;
+  border: 1px solid #e1e8ff;
+}
+
+.product-recommendations-section h3 {
+  color: #2d3748;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-recommendations-section p {
+  color: #718096;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.recommended-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.recommended-product-card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease;
+}
+
+.recommended-product-card:hover {
+  transform: translateY(-3px);
+}
+
+.product-info h4 {
+  color: #2d3748;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.product-info .brand {
+  background: #667eea;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.product-info .price {
+  font-weight: bold;
+  color: #38a169;
+  margin: 8px 0;
+  font-size: 1.1rem;
+}
+
+.product-info .rating {
+  color: #ed8936;
+  font-size: 0.85rem;
+}
+
+.recommendation-reason {
+  background: #f7fafc;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 12px 0;
+  border-left: 3px solid #667eea;
+}
+
+.recommendation-reason strong {
+  color: #2d3748;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+
+.recommendation-reason p {
+  color: #4a5568;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.view-product-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.view-product-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* Mobile responsiveness for analysis page */
+@media (max-width: 768px) {
+  .recommended-products {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-recommendations-section {
+    padding: 15px;
+  }
+}
