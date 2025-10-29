@@ -16,9 +16,9 @@ function ProductCard({ product, onClick }) {
         
         <div className="flex items-center justify-between mt-2">
           {product.is_top_product ? (
-            <span className="text-xs text-orange-500 font-medium">🔥 Top produk</span>
+            <span className="text-xs text-orange-500 font-medium">🔥 Top Product</span>
           ) : (
-            <span className="text-xs text-green-600 font-medium">✓ Direkomendasikan untuk anda</span>
+            <span className="text-xs text-green-600 font-medium">✓ Recommended for you</span>
           )}
           
           {product.rating && (
